@@ -10,14 +10,10 @@ public class MoveCrab : MonoBehaviour
     private Vector2 moveSpot;
     private bool flip = false;
 
-
-
     void Start()
     {
         moveSpot = new Vector2 (Random.Range(-6.5f, 8f), Random.Range(-2.43f, -4.5f));
-        waitTime = startWaitTime;
-        
-        
+        waitTime = startWaitTime;      
     }
 
     void Update()
@@ -36,9 +32,8 @@ public class MoveCrab : MonoBehaviour
             {
                 waitTime -= Time.deltaTime;
                 if (flip) {
-                moveSpot = new Vector2 (Random.Range(-6.5f, 8f), Random.Range(-2.43f, -4.5f));   
-                Debug.Log("Flip!");
-                flip = false;          
+               // moveSpot = new Vector2 (Random.Range(-6.5f, 8f), Random.Range(-2.43f, -4.5f));   
+              //  flip = false;          
                 }
             }
         }
@@ -48,9 +43,11 @@ public class MoveCrab : MonoBehaviour
         void OnTriggerEnter2D(Collider2D other)
         {        
            if (other.CompareTag("Crab")) {
+             Debug.Log("Flip!");
+             moveSpot = new Vector2 (Random.Range(-6.5f, 8f), Random.Range(-2.43f, -4.5f));
                 flip = true;
             } else {
-                flip = false;
+              //  flip = false;
             }
         }
 
